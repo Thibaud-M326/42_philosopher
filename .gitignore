@@ -1,0 +1,87 @@
+# Fichiers compilés
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+
+# Images
+*.png
+
+# Fichiers exécutables (sans extension)
+philo
+
+# Fichiers de debug
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Fichiers temporaires de l'éditeur
+*~
+*.swp
+*.swo
+.*.swp
+.*.swo
+
+# IDE/Éditeur
+.vscode/
+.idea/
+*.sublime-*
+.DS_Store
+Thumbs.db
+
+# Fichiers de build/compilation
+build/
+bin/
+obj/
+*.build/
+
+# Fichiers de test et debug
+test
+test_*
+debug
+valgrind-out.txt
+*.log
+*.txt
+
+# Fichiers système macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Fichiers système Linux
+.directory
+.Trash-*
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Sauvegarde automatique
+*.bak
+*.backup
+*~
+
+# Norminette (42)
+.norminette_cache
+
+# Makefile temporaires
+.make.deps
+.deps/
+
+# Core dumps
+core
+core.*
+vgcore.*
+
+# Coverage
+*.gcda
+*.gcno
+*.gcov
+coverage/
+
+# Static analysis
+cppcheck-report.xml

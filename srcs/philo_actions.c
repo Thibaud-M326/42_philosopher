@@ -16,8 +16,7 @@ int	eat(t_data *data, t_philo *philo)
 {
 	if (!is_sim_running(data))
 		return (0);
-	if (take_forks(philo) == 1)
-		return (0);
+	take_forks(philo);
 	printf_mutex(philo->data, "is eating", philo->id);
 	ft_msleep_sim_running(data, data->time_to_eat);
 	pthread_mutex_lock(&philo->last_meal_time_mtx);

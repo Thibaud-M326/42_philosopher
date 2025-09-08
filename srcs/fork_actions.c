@@ -43,8 +43,8 @@ int	take_forks_even(t_philo *philo)
 		return (1);
 	}
 	philo->right_fork->available = 0;
-	printf_mutex(philo->data, "has taken a fork", philo->id);
 	pthread_mutex_unlock(&philo->right_fork->fork);
+	printf_mutex(philo->data, "has taken a fork", philo->id);
 	pthread_mutex_lock(&philo->left_fork->fork);
 	if (philo->left_fork->available == 0)
 	{
@@ -69,9 +69,8 @@ int	take_forks_odd(t_philo *philo)
 		return (1);
 	}
 	philo->left_fork->available = 0;
-	printf_mutex(philo->data, "has taken a fork", philo->id);
 	pthread_mutex_unlock(&philo->left_fork->fork);
-
+	printf_mutex(philo->data, "has taken a fork", philo->id);
 	pthread_mutex_lock(&philo->right_fork->fork);
 	if (philo->right_fork->available == 0)
 	{

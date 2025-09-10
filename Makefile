@@ -3,7 +3,6 @@ CFLAGS = -g3 -Wall -Wextra -Werror -MMD -MP -I./include
 
 OBJ_DIR = ./obj
 SRC_DIR = ./srcs
-HEADER_DIR = ./include
 
 SRC =									\
 	$(SRC_DIR)/check_args.c				\

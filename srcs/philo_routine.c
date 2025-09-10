@@ -34,7 +34,7 @@ void	*philo_routine(void *v_philo)
 		return (NULL);
 	printf_mutex(philo->data, "is thinking", philo->id);
 	if (philo->id & 1)
-		ft_msleep(data->time_to_eat);
+		ft_msleep_sim_running(data, data->time_to_eat);
 	while (is_sim_running(data))
 	{
 		if (eat(data, philo))

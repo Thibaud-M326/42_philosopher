@@ -26,11 +26,8 @@ int	create_philo_threads(t_data *data)
 		{
 			data->start_sim = 0;
 			pthread_mutex_unlock(&data->start_sim_mtx);
-			while (i >= 0)
-			{
+			while (--i >= 0)
 				pthread_join(data->philos[i].philo, NULL);
-				i--;
-			}
 			return (1);
 		}
 		i++;

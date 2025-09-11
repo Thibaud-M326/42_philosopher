@@ -47,7 +47,7 @@ t_data	*init_data_forks(t_data *data)
 	{
 		if (pthread_mutex_init(&data->forks[i].fork, NULL) != 0)
 		{
-			while (i-- >= 0)
+			while (--i >= 0)
 				pthread_mutex_destroy(&data->forks[i].fork);
 			free(data->forks);
 			data->forks = NULL;

@@ -35,6 +35,7 @@ typedef struct s_philo
 
 typedef struct s_data
 {
+	pthread_mutex_t		start_time_mtx;
 	long				start_time;
 	int					nb_philo;
 	long				time_to_die;

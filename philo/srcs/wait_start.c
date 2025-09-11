@@ -14,12 +14,19 @@
 
 int	wait_start(t_data *data)
 {
-	pthread_mutex_lock(&data->start_sim_mtx);
-	if (data->start_sim == 1)
+	while (1)
 	{
+		pthread_mutex_lock(&data->start_sim_mtx);
+		if (data->start_sim == 1)
+		{
+			pthread_mutex_unlock(&data->start_sim_mtx);
+			return (1);
+		}
+		else if (data->start_sim == 0)
+		{
+			pthread_mutex_unlock(&data->start_sim_mtx);
+			return (0);
+		}
 		pthread_mutex_unlock(&data->start_sim_mtx);
-		return (1);
 	}
-	pthread_mutex_unlock(&data->start_sim_mtx);
-	return (0);
 }

@@ -61,6 +61,8 @@ int	is_philos_ate_enough(t_data *data)
 int	monitor(t_data *data)
 {
 	set_start_times(data);
+	pthread_mutex_lock(&data->start_sim_mtx);
+	data->start_sim = 1;
 	pthread_mutex_unlock(&data->start_sim_mtx);
 	while (is_sim_running(data))
 	{

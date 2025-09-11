@@ -17,6 +17,7 @@ void	*one_philo_routine(void *v_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *)v_philo;
+	printf_mutex(philo->data, "is thinking", philo->id);
 	if (!wait_start(philo->data))
 		return (NULL);
 	take_a_fork_and_die(philo);

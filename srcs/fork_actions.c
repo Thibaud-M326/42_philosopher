@@ -48,10 +48,10 @@ int	take_forks_even(t_philo *philo)
 	pthread_mutex_lock(&philo->left_fork->fork);
 	if (philo->left_fork->available == 0)
 	{
+		pthread_mutex_unlock(&philo->left_fork->fork);
 		pthread_mutex_lock(&philo->right_fork->fork);
 		philo->right_fork->available = 1;
 		pthread_mutex_unlock(&philo->right_fork->fork);
-		pthread_mutex_unlock(&philo->left_fork->fork);
 		return (1);
 	}
 	philo->left_fork->available = 0;
@@ -74,10 +74,10 @@ int	take_forks_odd(t_philo *philo)
 	pthread_mutex_lock(&philo->right_fork->fork);
 	if (philo->right_fork->available == 0)
 	{
+		pthread_mutex_unlock(&philo->right_fork->fork);
 		pthread_mutex_lock(&philo->left_fork->fork);
 		philo->left_fork->available = 1;
 		pthread_mutex_unlock(&philo->left_fork->fork);
-		pthread_mutex_unlock(&philo->right_fork->fork);
 		return (1);
 	}
 	philo->right_fork->available = 0;

@@ -24,6 +24,18 @@ void	*one_philo_routine(void *v_philo)
 	return (NULL);
 }
 
+int	wait_start_sim(t_data *data)
+{
+	while (wait_start(data) == -1)
+	{
+		if (wait_start(data) == 1)
+			return (1);
+		if (wait_start(data) == 0)
+			return (0);
+	}
+	return (-1);
+}
+
 void	*philo_routine(void *v_philo)
 {
 	t_philo	*philo;
@@ -31,7 +43,7 @@ void	*philo_routine(void *v_philo)
 
 	philo = (t_philo *)v_philo;
 	data = philo->data;
-	if (!wait_start(data))
+	if (wait_start_sim(data) == 0)
 		return (NULL);
 	printf_mutex(philo->data, "is thinking", philo->id);
 	if (philo->id & 1)

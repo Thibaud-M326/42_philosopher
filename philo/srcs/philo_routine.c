@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "philo.h"
 
 void	*one_philo_routine(void *v_philo)
@@ -17,6 +18,7 @@ void	*one_philo_routine(void *v_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *)v_philo;
+	usleep(10);
 	printf_mutex(philo->data, "is thinking", philo->id);
 	if (!wait_start(philo->data))
 		return (NULL);

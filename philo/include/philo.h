@@ -91,6 +91,7 @@ int		philo_threads(t_data *data);
 int		join_philo_threads(t_data *data);
 
 //	srcs/printf_mutex.c
+void	print_usage(void);
 void	printf_mutex_ate_enough(t_data *data);
 void	printf_mutex(t_data *data, char *msg, int id_philo);
 

@@ -10,22 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "philo.h"
-
-void	print_usage(void)
-{
-	printf("Usage: ");
-	printf("./philo number_of_philosophers time_to_die time_to_eat ");
-	printf("time_to_sleep [number_of_times_each_philosopher_must_eat]\n");
-	return ;
-}
 
 int	is_digit(int c)
 {
-	if (c >= '0' && c <= '9')
+	if (c == '+' || (c >= '0' && c <= '9'))
 		return (1);
 	return (0);
+}
+
+int	is_only_one_plus(char *str_av)
+{
+	int	i;
+
+	i = 1;
+	while (str_av[i])
+	{
+		if (i != 0 && str_av[i] == '+')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	is_only_zero(char *str_av)
+{
+	int	i;
+
+	i = 0;
+	while (str_av[i])
+	{
+		if (str_av[i] >= '1' && str_av[i] <= '9')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	is_pos_num(char *str_av)
@@ -33,11 +52,13 @@ int	is_pos_num(char *str_av)
 	int	i;
 
 	i = 0;
+	if (!is_only_one_plus(str_av))
+		return (0);
+	if (is_only_zero(str_av))
+		return (0);
 	while (str_av[i])
 	{
 		if (!is_digit(str_av[i]))
-			return (0);
-		if (str_av[0] == '0' && str_av[1] == '\0')
 			return (0);
 		i++;
 	}

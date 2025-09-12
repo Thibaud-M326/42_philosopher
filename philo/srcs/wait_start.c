@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "philo.h"
 
 int	wait_start(t_data *data)
@@ -28,5 +29,6 @@ int	wait_start(t_data *data)
 			return (0);
 		}
 		pthread_mutex_unlock(&data->start_sim_mtx);
+		usleep(100);
 	}
 }

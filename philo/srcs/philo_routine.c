@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "philo.h"
 
 void	*one_philo_routine(void *v_philo)
@@ -41,6 +42,7 @@ void	*philo_routine(void *v_philo)
 		if (eat(data, philo))
 			if (sleeping(data, philo))
 				think(data, philo);
+		usleep(100);
 	}
 	return (NULL);
 }

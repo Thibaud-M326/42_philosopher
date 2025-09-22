@@ -16,7 +16,8 @@
 
 t_data	*init_data_av(t_data *data, char **av)
 {
-	int	err;
+	int		err;
+	long	offset;
 
 	memset(data, 0, sizeof(t_data));
 	data->nb_philo = ft_atol(av[1], &err);
@@ -27,7 +28,11 @@ t_data	*init_data_av(t_data *data, char **av)
 		data->nb_must_eat = ft_atol(av[5], &err);
 	else
 		data->nb_must_eat = -1;
-	data->odd_offset = 2 * data->time_to_eat - data->time_to_sleep;
+	if ((2 * data->time_to_eat - data->time_to_sleep) <= 60)
+		offset = 60;
+	else
+		offset = 2 * data->time_to_eat - data->time_to_sleep;
+	data->odd_offset = offset;
 	data->start_time = 0;
 	data->run_sim = 1;
 	data->start_sim = -1;

@@ -10,8 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <unistd.h>
 #include "philo.h"
+
+void	printf_mutex_dead(t_data *data, char *msg, int id_philo)
+{
+	long	sim_time;
+
+	pthread_mutex_lock(&data->print);
+	pthread_mutex_lock(&data->start_time_mtx);
+	sim_time = get_current_time() - data->start_time;
+	pthread_mutex_unlock(&data->start_time_mtx);
+	printf("%ld %d %s\n", sim_time, id_philo, msg);
+	pthread_mutex_unlock(&data->print);
+	return ;
+}
 
 void	is_a_philo_dead(t_data *data)
 {
@@ -26,7 +40,7 @@ void	is_a_philo_dead(t_data *data)
 		pthread_mutex_unlock(&data->philos[i].last_meal_time_mtx);
 		if (time_last_meal >= data->time_to_die)
 		{
-			printf_mutex(data, "died", data->philos[i].id);
+			printf_mutex_dead(data, "died", data->philos[i].id);
 			pthread_mutex_lock(&data->run_sim_mtx);
 			data->run_sim = 0;
 			pthread_mutex_unlock(&data->run_sim_mtx);

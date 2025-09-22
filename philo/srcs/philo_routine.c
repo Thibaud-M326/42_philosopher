@@ -39,12 +39,8 @@ void	*philo_routine(void *v_philo)
 	while (is_sim_running(data))
 	{
 		if (eat(data, philo))
-		{
 			if (sleeping(data, philo))
 				think(data, philo);
-		}
-		else
-			put_forks(philo);
 	}
 	return (NULL);
 }
